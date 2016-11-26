@@ -129,9 +129,6 @@ def run_crfasrnn(inputfile, outputfile, gpudevice):
     im = np.pad(im, pad_width=((0, pad_h), (0, pad_w), (0, 0)), mode = 'constant', constant_values = 0)
     # Get predictions
     #segmentation = net.predict([im])
-    paddedfile = 'im_padded.png'
-    im_padded = PILImage.fromarray(np.uint8(im))
-    im_padded.save(paddedfile)
 
     segmentation  = crfasrnn_segmenter(MODEL_FILE,PRETRAINED,gpudevice,[im])
 

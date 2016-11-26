@@ -67,14 +67,14 @@ namespace caffe {
 
 			// Initialize the kernels weights. The two files spatial.par and bilateral.par should be available.
 			FILE * pFile;
-			pFile = fopen("D:\\Program Files\\caffe\\spatial.par", "r");
+            pFile = fopen("spatial.par", "r");
 			CHECK(pFile) << "The file 'spatial.par' is not found. Please create it with initial spatial kernel weights.";
 			for (int i = 0; i < channels_; i++) {
 				fscanf(pFile, "%lf", &this->blobs_[0]->mutable_cpu_data()[i * channels_ + i]);
 			}
 			fclose(pFile);
 
-			pFile = fopen("D:\\Program Files\\caffe\\bilateral.par", "r");
+            pFile = fopen("bilateral.par", "r");
 			CHECK(pFile) << "The file 'bilateral.par' is not found. Please create it with initial bilateral kernel weights.";
 			for (int i = 0; i < channels_; i++) {
 				fscanf(pFile, "%lf", &this->blobs_[1]->mutable_cpu_data()[i * channels_ + i]);
